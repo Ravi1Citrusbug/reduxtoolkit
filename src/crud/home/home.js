@@ -1,16 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { useSelector } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
+import { deleteUser } from '../usereducer'
 
 function Home() {
     const users = useSelector((state) => state.users)
-    console .log(users)
+    const dispatch = useDispatch();
+    const handleDelete =(id)=>{
+        dispatch(deleteUser({id:id}));
+        
+    }
   return (
     <div className ="container">
-        <h2>crud app with json server</h2>
-        <Link to = '/create' className='btn btn-success my-3'>Add +</Link>
+        <h2>crud app with json server (redux toolkit)</h2>
         <table className='table'>
             <thead>
                 <tr>
@@ -29,7 +32,7 @@ function Home() {
                         <td>{user.email}</td>
                         <td>
                             <Link to = { `/edit/${user.id}`} className='btn btn-sm btn-primary'>Edit</Link>
-                            <Link to = "/delete" className='btn btn-sm btn-danger ms-2'>Delete</Link>
+                            <Link className='btn btn-sm btn-danger ms-2' onClick={ ()=> handleDelete(user.id) }>Delete</Link>
                         </td>
                     </tr>
 
@@ -38,8 +41,7 @@ function Home() {
             </tbody>
 
         </table>
-
-      
+        <Link to = '/create' className='btn btn-success my-3'>Add +</Link>  
     </div>
   )
 }
