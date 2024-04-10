@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './crud/home/home';
 import Create from './crud/create/create';
-import Update from './crud/create/update/update';
+import Update from './crud/update/update';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 function App() {
   return (

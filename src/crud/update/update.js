@@ -2,7 +2,7 @@ import {React,useState} from 'react';
 import { useParams }  from 'react-router-dom';
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { updateUser } from '../../usereducer';
+import { updateUser } from '../usereducer';
 function Update() {
     const { id } = useParams();
     const users = useSelector((state)=> state.users);
